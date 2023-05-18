@@ -13,15 +13,12 @@ import java.util.concurrent.ThreadLocalRandom;
 public class RollDiceController {
 
     @GetMapping("/roll-dice")
-    public String rollDice(Model model) {
-        model.addAttribute("pageTitle", "Roll Dice");
+    public String rollDice() {
         return "roll-dice";
     }
 
     @GetMapping("/roll-dice/{n}")
     public String guess(@PathVariable int n, Model model) {
-        model.addAttribute("pageTitle", "Guess");
-
         ArrayList<Integer> rolls = new ArrayList<>();
         int correctGuess = 0;
         int rand;
