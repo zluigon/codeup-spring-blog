@@ -1,7 +1,19 @@
 package com.codeup.codeupspringblog.models;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "posts")
 public class Post {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Long id;
+
+    @Column(name = "title")
     private String title;
+
+    @Column(name = "body")
     private String body;
 
     public Post() {
@@ -10,6 +22,20 @@ public class Post {
     public Post(String title, String body) {
         this.title = title;
         this.body = body;
+    }
+
+    public Post(Long id, String title, String body) {
+        this.id = id;
+        this.title = title;
+        this.body = body;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {
