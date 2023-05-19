@@ -9,12 +9,12 @@
     <div class="row">
         <div class="col-md-6">
             <div class="m-3">
-                <h3>Title: <span th:text="${post.getTitle()}"></span></h3>
-                <h5>Description: <span th:text="${post.getBody()}"></span></h5>
-<!--                <form th:action="@{/posts/delete}">-->
-<!--                    <input type="hidden" name="id" th:value="${post.getId()}">-->
-<!--                    <button type="submit" class="btn btn-danger">Delete</button>-->
-<!--                </form>-->
+                <h3>Title: <span th:text="${post.title}"></span></h3>
+                <h5>Description: <span th:text="${post.body}"></span></h5>
+                <form th:action="@{/posts/delete}" method="post">
+                    <input type="hidden" name="id" th:value="${post.id}">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
             </div>
         </div>
     </div>
