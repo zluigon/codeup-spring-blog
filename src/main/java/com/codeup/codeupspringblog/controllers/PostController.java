@@ -24,18 +24,14 @@ public class PostController {
     @GetMapping("/posts")
     public String indexPage(Model model) {
         List<Post> posts = postDao.findAll();
-
         model.addAttribute("posts", posts);
-
         return "posts/index";
     }
 
     @GetMapping("/posts/{id}")
     public String id(@PathVariable Long id, Model model) {
         Post post = postDao.getReferenceById(id);
-
         model.addAttribute("post", post);
-
         return "posts/show";
     }
 
