@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials/header.html :: head('Post Index')">
+<head th:replace="~{partials/header.html :: head('Post Index')}">
 </head>
 <body>
-<nav th:replace="partials/navbar.html :: navbar"></nav>
+<nav th:replace="~{partials/navbar.html :: navbar}"></nav>
 
 <main>
 
@@ -18,6 +18,6 @@
     </div>
 </div>
 </main>
-<footer th:replace="partials/footer.html :: footer"></footer>
+<footer th:replace="~{partials/footer.html :: footer}"></footer>
 </body>
 </html>

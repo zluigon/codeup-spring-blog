@@ -30,26 +30,40 @@ public class PostController {
 
     @GetMapping("/posts/{id}")
     public String id(@PathVariable Long id, Model model) {
-        Post post = postDao.getReferenceById(id);
+        Post post = postDao.findById(id).get();
         model.addAttribute("post", post);
         return "posts/show";
     }
 
     @GetMapping("/posts/create")
-    public String createGet() {
+    public String createGet(Model model) {
+        model.addAttribute("post", new Post());
         return "posts/create";
     }
 
     @PostMapping("/posts/create")
-    public String createPost(@RequestParam String title, @RequestParam String body) {
-        User user = userDao.getReferenceById(1L);
-        Post post = new Post(title, body, user);
+    public String createPost(@ModelAttribute Post post) {
+        User user = userDao.findById(1L).get();
+        post.setUser(user);
         postDao.save(post);
         return "redirect:/posts";
     }
 
+    @GetMapping("/posts/{id}/edit")
+    public String editPost(@PathVariable Long id, Model model) {
+        Post post = postDao.findById(id).get();
+        model.addAttribute("post", post);
+        return "posts/edit";
+    }
+
+    @PostMapping("/posts/edit")
+    public String updatePost(@ModelAttribute Post post) {
+        postDao.save(post);
+        return "redirect:/posts/" + post.getId();
+    }
+
     @PostMapping("/posts/delete")
-    public String deletePost(@RequestParam Long id){
+    public String deletePost(@RequestParam Long id) {
         postDao.deleteById(id);
         return "redirect:/posts";
     }
