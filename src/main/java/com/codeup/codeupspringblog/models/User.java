@@ -16,7 +16,7 @@ public class User {
     @Column(name = "username", unique = true)
     private String username;
 
-    @Column(name = "email")
+    @Column(name = "email", unique = true)
     private String email;
 
     @Column(name = "password")
@@ -26,6 +26,13 @@ public class User {
     private List<Post> posts;
 
     public User() {
+    }
+
+    public User(User copy) {
+        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
     }
 
     public User(Long id, String username, String email, String password, List<Post> posts) {
