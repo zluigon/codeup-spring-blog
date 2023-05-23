@@ -12,10 +12,12 @@
                 <h3>Title: <span th:text="${post.title}"></span></h3>
                 <h5>Description: <span th:text="${post.body}"></span></h5>
                 <h6>Contact: <span th:text="${post.user.email}"></span></h6>
-                <form th:action="@{/posts/delete}" method="post">
+
+                <form th:action="@{/posts/{id}/delete}" th:method="post">
                     <input type="hidden" name="id" th:value="${post.id}">
                     <button type="submit" class="btn btn-danger mb-2">Delete</button>
                 </form>
+
                 <a th:href="@{/posts/{id}/edit (id=${post.id})}" class="btn btn-success">Edit</a>
             </div>
         </div>
