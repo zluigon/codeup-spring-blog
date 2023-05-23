@@ -12,7 +12,4 @@ public class AuthenticationController {
         return "users/login";
     }
 
-    @PostMapping("/logout")
-    public void logout() {
-    }
 }

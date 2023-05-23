@@ -1,22 +1,31 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="~{partials/header.html :: head('Post Index')}">
 </head>
 <body>
 <nav th:replace="~{partials/navbar.html :: navbar}"></nav>
+<div sec:authorize="isAuthenticated()">
+    This content is only shown to authenticated users.
+
+    User ID: <span th:text="${#authentication.principal.id}"/>
+    Username: <span th:text="${#authentication.principal.username}"/>
+    Email: <span th:text="${#authentication.principal.email}"/>
+</div>
 
 <main>
 
-<div class="container center">
-    <div class="row">
-        <div th:each="post : ${posts}" class="col-md-6">
-            <div class="m-3">
-                <h3>Title: <span th:text="${post.title}"></span></h3>
-                <h5>Description: <span th:text="${post.body}"></span></h5>
+    <div class="container center">
+        <div class="row">
+            <div th:each="post : ${posts}" class="col-md-6">
+                <div class="m-3">
+                    <h3>Title: <span th:text="${post.title}"></span></h3>
+                    <h5>Description: <span th:text="${post.body}"></span></h5>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </main>
 <footer th:replace="~{partials/footer.html :: footer}"></footer>
 </body>
