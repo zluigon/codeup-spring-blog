@@ -7,7 +7,7 @@
 
 <div class="container">
 
-    <form th:action="@{/posts/edit}" th:method="post" th:object="${post}" class="form-group">
+    <form th:action="@{/posts/{id}/edit (id=${post.id})}" th:method="post" th:object="${post}" class="form-group">
         <input type="hidden" id="id" th:field="*{id}">
         <div class="mb-3">
             <label class="form-label" for="title">Title:</label>

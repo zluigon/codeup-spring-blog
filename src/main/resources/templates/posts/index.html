@@ -7,16 +7,19 @@
 <body>
 <nav th:replace="~{partials/navbar.html :: navbar}"></nav>
 <div sec:authorize="isAuthenticated()">
-    This content is only shown to authenticated users.
+    <div class="d-flex justify-content-evenly">
+        <div>This content is only shown to authenticated users.</div>
 
-    User ID: <span th:text="${#authentication.principal.id}"/>
-    Username: <span th:text="${#authentication.principal.username}"/>
-    Email: <span th:text="${#authentication.principal.email}"/>
+        <div>User ID: <span th:text="${#authentication.principal.id}"/></div>
+        <div>Username: <span th:text="${#authentication.principal.username}"/></div>
+        <div>Email: <span th:text="${#authentication.principal.email}"/></div>
+    </div>
 </div>
-
 <main>
 
     <div class="container center">
+        <h2>Latest posts</h2>
+        <hr>
         <div class="row">
             <div th:each="post : ${posts}" class="col-md-6">
                 <div class="m-3">
