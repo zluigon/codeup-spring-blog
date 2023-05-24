@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
 @Configuration
 @EnableWebSecurity
@@ -57,6 +58,10 @@ public class SecurityConfiguration {
                         "/posts/{id}/delete" // only authenticated users can delete posts
                 )
                 .authenticated()
+                .and()
+                .authorizeHttpRequests()
+                .requestMatchers("/css/**", "/js/**")
+                .permitAll()
         ;
         return http.build();
     }
