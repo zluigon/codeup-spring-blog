@@ -21,7 +21,7 @@
         <h2>Latest posts</h2>
         <hr>
         <div class="row">
-            <div th:each="post : ${posts}" class="col-md-6">
+            <div th:each="post : ${posts}" class="col-12">
                 <div class="m-3">
                     <h3>Title: <span th:text="${post.title}"></span></h3>
                     <h5>Description: <span th:text="${post.body}"></span></h5>

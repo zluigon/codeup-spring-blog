@@ -1,6 +1,8 @@
 package com.codeup.codeupspringblog.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "posts")
@@ -10,9 +12,12 @@ public class Post {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @NotBlank(message = "Posts must have a title.")
+    @Size(min = 3, message = "A title must be at least 3 characters.")
     @Column(name = "title")
     private String title;
 
+    @NotBlank(message = "Posts must have a description.")
     @Column(name = "body")
     private String body;
 
