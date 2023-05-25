@@ -60,7 +60,7 @@ public class SecurityConfiguration {
                 .authenticated()
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/css/**", "/js/**")
+                .requestMatchers("/css/**", "/js/**", "/favicon.ico")
                 .permitAll()
         ;
         return http.build();
